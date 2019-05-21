@@ -1,0 +1,25 @@
+{
+  "name": "nodecrash",
+  "version": "1.0.0",
+  "description": "nodeCrashCourseTraversy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirbayat98/nodeCrashCourse.git"
+  },
+  "author": "amirbayat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirbayat98/nodeCrashCourse/issues"
+  },
+  "homepage": "https://github.com/amirbayat98/nodeCrashCourse#readme",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
