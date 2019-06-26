@@ -8,6 +8,8 @@ from random import *
 import threading
 import time
 
+counter = 0
+
 # app = Flask(__name__, static_folder="templates/digital/build/static", template_folder='templates/digital/build')
 # app = Flask(__name__, template_folder="templates1")
 
@@ -151,12 +153,15 @@ while (True):
     elif(direc == b'h\n'):
         direction = 'h'
     dir()
-    dataToSend = ""
-    for i in range(9):
-        data[i] = float(ser.readline().decode().strip())
-    dataToSend = str(data[8]) + "R" 
-    ser1.write(dataToSend.encode())
-    print("sent")
+    counter++;
+    if(counter > 10):
+        counter = 0
+        dataToSend = ""
+        for i in range(9):
+            data[i] = float(ser.readline().decode().strip())
+        dataToSend = str(data[8]) + "R" 
+        ser1.write(dataToSend.encode())
+        print("sent")
 
 # if __name__ == '__main__':
 #    if flag_serial:
