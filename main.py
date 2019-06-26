@@ -154,7 +154,7 @@ while (True):
     dataToSend = ""
     for i in range(9):
         data[i] = float(ser.readline().decode().strip())
-        dataToSend += data[i]
+        dataToSend += str(data[i])
         if i < 8:
             dataToSend += "*"
         dataToSend += "R"
