@@ -158,7 +158,7 @@ while (True):
         if i < 8:
             dataToSend += "*"
         dataToSend += "R"
-    ser1.write(dataToSend)
+    ser1.write(dataToSend.encode())
     print("sent")
 
 # if __name__ == '__main__':
