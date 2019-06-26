@@ -154,7 +154,7 @@ while (True):
         direction = 'h'
     dir()
     counter += 1
-    if(counter > 10):
+    if counter > 10 and flag_serial:
         counter = 0
         dataToSend = ""
         for i in range(9):
