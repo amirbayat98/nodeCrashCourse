@@ -137,7 +137,6 @@ while (True):
     direc = ser1.readline()
     print(direc)
     if(direc == b'w\n'):
-        print("aliali")
         direction = 'w'
     elif(direc == b'q\n'):
         direction = 'q'
