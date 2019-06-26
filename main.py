@@ -136,21 +136,20 @@ while (True):
     global direction
     direc = ser1.readline()
     print(direc)
-    direction = direc.strip()
-    if(direction == b'w\n'):
+    if(direc == b'w\n'):
         print("aliali")
         direction = 'w'
-    elif(direction == b'q\n'):
+    elif(direc == b'q\n'):
         direction = 'q'
-    elif(direction == b'e\n'):
+    elif(direc == b'e\n'):
         direction = 'e'
-    elif(direction == b'a\n'):
+    elif(direc == b'a\n'):
         direction = 'a'
-    elif(direction == b's\n'):
+    elif(direc == b's\n'):
         direction = 's'
-    elif(direction == b'd\n'):
+    elif(direc == b'd\n'):
         direction = 'd'
-    elif(direction == b'h\n'):
+    elif(direc == b'h\n'):
         direction = 'h'
     dir()
 
