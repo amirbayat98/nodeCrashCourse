@@ -154,11 +154,8 @@ while (True):
     dataToSend = ""
     for i in range(9):
         data[i] = float(ser.readline().decode().strip())
-        dataToSend += str(data[i])
-        if i < 8:
-            dataToSend += "*"
-        dataToSend += "R"
-    ser1.write(dataToSend)
+    dataToSend = str(data[8]) + "R" 
+    ser1.write(dataToSend.encode())
     print("sent")
 
 # if __name__ == '__main__':
