@@ -1,7 +1,7 @@
 import serial
 import time
 
-flag_serial = False
+flag_serial = True
 
 # from flask import Flask, jsonify, render_template, request, send_from_directory
 from random import *
@@ -30,9 +30,9 @@ data = [0] * 9
 max_speed = 150
 output_speedR = 0
 output_speedL = 0
-speed_step = 3
-speed_stepR = 15
-speed_stepB = 1
+speed_step = 3 * 3
+speed_stepR = 15 * 3
+speed_stepB = 1 * 3
 
 
 # @app.route('/')
