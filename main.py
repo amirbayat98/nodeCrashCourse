@@ -32,9 +32,9 @@ data = [0] * 9
 max_speed = 150
 output_speedR = 0
 output_speedL = 0
-speed_step = 3 * 3
-speed_stepR = 15 * 3
-speed_stepB = 1 * 3
+speed_step = 3 * 2
+speed_stepR = 15 * 2
+speed_stepB = 1 * 2
 
 
 # @app.route('/')
@@ -153,7 +153,7 @@ while (True):
     elif(direc == b'h\n'):
         direction = 'h'
     dir()
-    counter++;
+    counter += 1
     if(counter > 10):
         counter = 0
         dataToSend = ""
