@@ -3,13 +3,13 @@ import time
 
 flag_serial = False
 
-#from flask import Flask, jsonify, render_template, request, send_from_directory
+# from flask import Flask, jsonify, render_template, request, send_from_directory
 from random import *
 import threading
 import time
 
 # app = Flask(__name__, static_folder="templates/digital/build/static", template_folder='templates/digital/build')
-#app = Flask(__name__, template_folder="templates1")
+# app = Flask(__name__, template_folder="templates1")
 
 
 nodFlag = False
@@ -17,7 +17,6 @@ direction = ""
 
 ser1 = serial.Serial(port='/dev/ttyS0')
 ser1.baudrate = 115200
-
 
 try:
     ser = serial.Serial('/dev/ttyUSB0')
@@ -33,10 +32,11 @@ output_speedR = 0
 output_speedL = 0
 speed_step = 3
 speed_stepR = 15
+speed_stepB = 1
 
 
-#@app.route('/')
-#def direction():
+# @app.route('/')
+# def direction():
 #    # return direction
 #    global direction
 #    direction = request.args.get('direction')
@@ -107,6 +107,21 @@ def dir():
         if flag_serial:
             ser.write(("S" + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
 
+    elif direction=="q":
+        if(output_speedR < max_speed):
+            output_speedR += speed_step
+        if(output_speedL < max_speed):
+            output_speedL += speed_stepB
+        if flag_serial:
+            ser.write(("S" + + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
+
+    elif direction=="e":
+        if(output_speedR < max_speed):
+            output_speedR += speed_stepB
+        if(output_speedL < max_speed):
+            output_speedL += speed_step
+        if flag_serial:
+            ser.write(("S" + + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
 
     else:
         if flag_serial:
@@ -117,18 +132,29 @@ def dir():
     time.sleep(0.1)
 
 
+while (True):
+    global direction
+    direc = ser1.readline()
+    print(direc)
+    direction = direc.strip()
+    if(direction == b'w\n'):
+        print("aliali")
+        direction = 'w'
+    elif(direction == b'q\n'):
+        direction = 'q'
+    elif(direction == b'e\n'):
+        direction = 'e'
+    elif(direction == b'a\n'):
+        direction = 'a'
+    elif(direction == b's\n'):
+        direction = 's'
+    elif(direction == b'd\n'):
+        direction = 'd'
+    elif(direction == b'h\n'):
+        direction = 'h'
+    dir()
 
-while(True):
-	global direction
-	direc = ser1.readline()
-	print(direc)
-	direction = direc.decode().strip()
-	dir() 
-	
-
-
-
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    if flag_serial:
 #        ser.write("R0 0\n".encode())
 #    app.debug = True
