@@ -113,7 +113,7 @@ def dir():
         if(output_speedL < max_speed):
             output_speedL += speed_stepB
         if flag_serial:
-            ser.write(("S" + + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
+            ser.write(("S" + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
 
     elif direction=="e":
         if(output_speedR < max_speed):
@@ -121,7 +121,7 @@ def dir():
         if(output_speedL < max_speed):
             output_speedL += speed_step
         if flag_serial:
-            ser.write(("S" + + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
+            ser.write(("S" + str(output_speedR) + " " + str(output_speedL) + '\n').encode())
 
     else:
         if flag_serial:
