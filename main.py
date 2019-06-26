@@ -151,6 +151,15 @@ while (True):
     elif(direc == b'h\n'):
         direction = 'h'
     dir()
+    dataToSend = ""
+    for i in range(9):
+        data[i] = float(ser.readline().decode().strip())
+        dataToSend += data[i]
+        if i < 8:
+            dataToSend += "*"
+        dataToSend += "R"
+    ser1.write(dataToSend)
+    print("sent")
 
 # if __name__ == '__main__':
 #    if flag_serial:
