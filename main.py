@@ -3,20 +3,21 @@ import time
 
 flag_serial = True
 
-# from flask import Flask, jsonify, render_template, request, send_from_directory
+from flask import Flask, jsonify, render_template, request, send_from_directory
 from random import *
 import threading
 import time
 
 counter = 0
 
-# app = Flask(__name__, static_folder="templates/digital/build/static", template_folder='templates/digital/build')
-# app = Flask(__name__, template_folder="templates1")
+#app = Flask(__name__, static_folder="templates/digital/build/static", template_folder='templates/digital/build')
+app = Flask(__name__, template_folder="templates1")
 
 
 nodFlag = False
 direction = ""
 
+import serialsni
 ser1 = serial.Serial(port='/dev/ttyS0')
 ser1.baudrate = 115200
 
@@ -37,24 +38,6 @@ speed_stepR = 15 * 2
 speed_stepB = 1 * 2
 
 
-# @app.route('/')
-# def direction():
-#    # return direction
-#    global direction
-#    direction = request.args.get('direction')
-#    print(direction)
-#    #dir()
-#    if flag_serial:
-#        for i in range(9):
-#            data[i] = float(ser.readline().decode().strip())
-#        print(data[8])
-#    return render_template('ugv.html')
-
-
-# @app.route('/', methods=['POST'])
-# def direction1():
-#     direction = request
-#     print(direction)
 
 
 def dir():
@@ -161,9 +144,32 @@ while (True):
         dataToSend += str(data[8])
         ser1.write(dataToSend.encode())
         print("sent")
+        
+        
 
-# if __name__ == '__main__':
-#    if flag_serial:
-#        ser.write("R0 0\n".encode())
-#    app.debug = True
-#    app.run(use_reloader=True, host='0.0.0.0', port=5000)
+
+@app.route('/')
+def direction():
+   # return direction
+   global direction
+   direction = request.args.get('direction')
+   print(direction)
+   dir()
+   if flag_serial:
+       for i in range(9):
+           data[i] = float(ser.readline().decode().strip())
+       print(data[8])
+   return render_template('ugv.html')
+
+
+@app.route('/batt')
+def direction1():
+    battery = data[8]
+    return(battery)
+    
+
+if __name__ == '__main__':
+   if flag_serial:
+       ser.write("R0 0\n".encode())
+   app.debug = True
+   app.run(use_reloader=True, host='0.0.0.0', port=5000)
