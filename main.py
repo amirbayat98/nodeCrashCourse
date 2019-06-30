@@ -53,10 +53,9 @@ speed_stepB = 1 * 2
 
 # @app.route('/', methods=['POST'])
 # def direction1():
-#     print('goh')
 #     direction = request
 #     print(direction)
-#     return ("an")
+
 
 def dir():
     global output_speedR, output_speedL
